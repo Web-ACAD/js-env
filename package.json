@@ -16,8 +16,8 @@
 		"email": "kudera.d@gmail.com",
 		"url": "https://www.davidkudera.com"
 	},
-	"main": "./lib/main.js",
-	"types": "./lib/main.d.js",
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.js",
 	"dependencies": {
 		"dotenv": "^5.0.1"
 	},
