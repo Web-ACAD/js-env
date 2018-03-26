@@ -36,10 +36,10 @@
 		"build": "tsc",
 		"watch": "tsc --watch",
 		"test": "mocha -r ts-node/register test/tests/*.ts",
-		"lint": "yarn run lint:src && yarn run lint:test",
+		"lint": "npm run lint:src && npm run lint:test",
 		"lint:src": "tslint --project tsconfig.json",
 		"lint:test": "tslint --project test/tsconfig.json",
-		"pretest": "yarn run build",
-		"prepublish": "yarn run build"
+		"pretest": "npm run build",
+		"prepublishOnly": "npm run build"
 	}
 }

@@ -3,5 +3,4 @@ src/
 tests/
 .travis.yml
 /tsconfig.json
-yarn.lock
-yarn-error.log
+package-lock.json
