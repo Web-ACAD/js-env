@@ -17,7 +17,7 @@
 		"url": "https://www.davidkudera.com"
 	},
 	"main": "./lib/index.js",
-	"types": "./lib/index.d.js",
+	"types": "./lib/index.d.ts",
 	"dependencies": {
 		"dotenv": "^5.0.1"
 	},
