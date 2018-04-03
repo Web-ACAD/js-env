@@ -20,7 +20,9 @@ describe('loadEnv()', () => {
 
 	it('should throw an error if key from schema does not exists in env file', () => {
 		const schema: EnvSchema = {
-			UNKNOWN_KEY: 'string',
+			UNKNOWN_KEY: {
+				type: 'string',
+			},
 		};
 
 		expect(() => {
@@ -30,11 +32,21 @@ describe('loadEnv()', () => {
 
 	it('should load env file with schema', () => {
 		const schema: EnvSchema = {
-			STRING_VALUE: 'string',
-			NUMBER_VALUE: 'number',
-			BOOLEAN_LOWERCASE_VALUE: 'boolean',
-			BOOLEAN_UPPERCASE_VALUE: 'boolean',
-			BOOLEAN_NUMERIC_VALUE: 'boolean',
+			STRING_VALUE: {
+				type: 'string',
+			},
+			NUMBER_VALUE: {
+				type: 'number',
+			},
+			BOOLEAN_LOWERCASE_VALUE: {
+				type: 'boolean',
+			},
+			BOOLEAN_UPPERCASE_VALUE: {
+				type: 'boolean',
+			},
+			BOOLEAN_NUMERIC_VALUE: {
+				type: 'boolean',
+			},
 		};
 
 		expect(loadEnv(env, schema)).to.be.eql({
@@ -48,7 +60,9 @@ describe('loadEnv()', () => {
 
 	it('should include only values from schema', () => {
 		const schema: EnvSchema = {
-			NUMBER_VALUE: 'number',
+			NUMBER_VALUE: {
+				type: 'number',
+			},
 		};
 
 		expect(loadEnv(env, schema)).to.be.eql({

@@ -29,18 +29,24 @@ const env = loadEnv('path/to/.env');
 
 By default all values are returned as strings. This can be changed by providing schema where you can define returned types.
 
+```typescript
+import {loadEnv} from '@webacad/env';
+
+const env = loadEnv('path/to/.env', {
+    NODE_ENV: {
+    	type: 'string',
+    },
+    SERVER_PORT: {
+    	type: 'number',
+    },
+    SOURCE_MAPS: {
+    	type: 'boolean',
+    },
+});
+```
+
 **Allowed types:**
 
 * `string`
 * `number`
 * `boolean`
-
-```typescript
-import {loadEnv} from '@webacad/env';
-
-const env = loadEnv('path/to/.env', {
-    NODE_ENV: 'string',
-    SERVER_PORT: 'number',
-    SOURCE_MAPS: 'boolean',
-});
-```

@@ -3,7 +3,9 @@ import * as dotenv from 'dotenv';
 
 export declare interface EnvSchema
 {
-	[key: string]: 'string' | 'number' | 'boolean',
+	[key: string]: {
+		type: 'string' | 'number' | 'boolean',
+	},
 }
 
 
@@ -31,16 +33,16 @@ export function loadEnv<T = any>(file: string, schema?: EnvSchema): T
 				throw new Error(`loadEnv: key ${key} from provided schema does not exists in ${file}`);
 			}
 
-			const type = schema[key];
+			const conf = schema[key];
 			const value = envParsed[key];
 
-			if (type === 'string') {
+			if (conf.type === 'string') {
 				result[key] = value;
 
-			} else if (type === 'number') {
+			} else if (conf.type === 'number') {
 				result[key] = Number(value);
 
-			} else if (type === 'boolean') {
+			} else if (conf.type === 'boolean') {
 				if (value.toLowerCase() === 'false') {
 					result[key] = false;
 
