@@ -18,16 +18,29 @@ describe('loadEnv()', () => {
 		});
 	});
 
-	it('should throw an error if key from schema does not exists in env file', () => {
+	it('should throw an error if key from schema does not exists in env file and is required', () => {
 		const schema: EnvSchema = {
 			UNKNOWN_KEY: {
 				type: 'string',
+				required: true,
 			},
 		};
 
 		expect(() => {
 			loadEnv(env, schema);
 		}).to.throw(Error, `loadEnv: key UNKNOWN_KEY from provided schema does not exists in ${env}`);
+	});
+
+	it('should return undefined for unknown non-required key', () => {
+		const schema: EnvSchema = {
+			UNKNOWN_KEY: {
+				type: 'string',
+			},
+		};
+
+		expect(loadEnv(env, schema)).to.be.eql({
+			UNKNOWN_KEY: undefined,
+		});
 	});
 
 	it('should load env file with schema', () => {

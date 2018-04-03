@@ -35,6 +35,7 @@ import {loadEnv} from '@webacad/env';
 const env = loadEnv('path/to/.env', {
     NODE_ENV: {
     	type: 'string',
+    	required: true,
     },
     SERVER_PORT: {
     	type: 'number',
@@ -44,6 +45,11 @@ const env = loadEnv('path/to/.env', {
     },
 });
 ```
+
+**Options:**
+
+* `type`: `"string"`, `"number"` or `"boolean"` (default: `"string"`)
+* `required`: `boolean` (default: `false`)
 
 **Allowed types:**
 

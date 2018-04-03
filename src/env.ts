@@ -5,6 +5,7 @@ export declare interface EnvSchema
 {
 	[key: string]: {
 		type?: 'string' | 'number' | 'boolean',
+		required?: boolean,
 	},
 }
 
@@ -29,16 +30,26 @@ export function loadEnv<T = any>(file: string, schema?: EnvSchema): T
 
 	for (let key in schema) {
 		if (schema.hasOwnProperty(key)) {
-			if (typeof envParsed[key] === 'undefined') {
-				throw new Error(`loadEnv: key ${key} from provided schema does not exists in ${file}`);
-			}
-
 			const conf = schema[key];
-			const value = envParsed[key];
 
 			if (typeof conf.type === 'undefined') {
 				conf.type = 'string';
 			}
+
+			if (typeof conf.required === 'undefined') {
+				conf.required = false;
+			}
+
+			if (typeof envParsed[key] === 'undefined') {
+				if (conf.required) {
+					throw new Error(`loadEnv: key ${key} from provided schema does not exists in ${file}`);
+				}
+
+				result[key] = undefined;
+				continue;
+			}
+
+			const value = envParsed[key];
 
 			if (conf.type === 'string') {
 				result[key] = value;
