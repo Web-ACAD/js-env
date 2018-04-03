@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 export declare interface EnvSchema
 {
 	[key: string]: {
-		type: 'string' | 'number' | 'boolean',
+		type?: 'string' | 'number' | 'boolean',
 	},
 }
 
@@ -35,6 +35,10 @@ export function loadEnv<T = any>(file: string, schema?: EnvSchema): T
 
 			const conf = schema[key];
 			const value = envParsed[key];
+
+			if (typeof conf.type === 'undefined') {
+				conf.type = 'string';
+			}
 
 			if (conf.type === 'string') {
 				result[key] = value;
