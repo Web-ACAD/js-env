@@ -1,7 +1,7 @@
 {
 	"name": "@webacad/env",
 	"description": ".env file loader written in typescript",
-	"version": "0.0.3",
+	"version": "1.0.0",
 	"keywords": [
 		"dotenv",
 		"env"
