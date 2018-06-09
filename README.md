@@ -42,6 +42,7 @@ const env = loadEnv('path/to/.env', {
     },
     SOURCE_MAPS: {
     	type: 'boolean',
+    	default: true,
     },
 });
 ```
@@ -50,9 +51,4 @@ const env = loadEnv('path/to/.env', {
 
 * `type`: `"string"`, `"number"` or `"boolean"` (default: `"string"`)
 * `required`: `boolean` (default: `false`)
-
-**Allowed types:**
-
-* `string`
-* `number`
-* `boolean`
+* `default`: `any`
