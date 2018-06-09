@@ -96,4 +96,17 @@ describe('loadEnv()', () => {
 		});
 	});
 
+	it('should parse default value', () => {
+		const schema: EnvSchema = {
+			UNKNOWN_VALUE: {
+				type: 'boolean',
+				default: '1',
+			},
+		};
+
+		expect(loadEnv(env, schema)).to.be.eql({
+			UNKNOWN_VALUE: true,
+		});
+	});
+
 });

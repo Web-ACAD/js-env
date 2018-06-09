@@ -43,16 +43,16 @@ export function loadEnv<T = any>(file: string, schema?: EnvSchema): T
 
 			if (typeof envParsed[key] === 'undefined') {
 				if (typeof conf.default !== 'undefined') {
-					result[key] = conf.default;
+					envParsed[key] = conf.default;
+
+				} else {
+					if (conf.required) {
+						throw new Error(`loadEnv: key ${key} from provided schema does not exists in ${file}`);
+					}
+
+					result[key] = undefined;
 					continue;
 				}
-
-				if (conf.required) {
-					throw new Error(`loadEnv: key ${key} from provided schema does not exists in ${file}`);
-				}
-
-				result[key] = undefined;
-				continue;
 			}
 
 			const value = envParsed[key];
