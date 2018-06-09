@@ -43,7 +43,11 @@ export function loadEnv<T = any>(file: string, schema?: EnvSchema): T
 
 			if (typeof envParsed[key] === 'undefined') {
 				if (typeof conf.default !== 'undefined') {
-					envParsed[key] = conf.default;
+					if ({}.toString.call(conf.default) === '[object Function]') {
+						envParsed[key] = conf.default(key);
+					} else {
+						envParsed[key] = conf.default;
+					}
 
 				} else {
 					if (conf.required) {

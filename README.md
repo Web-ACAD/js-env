@@ -51,4 +51,4 @@ const env = loadEnv('path/to/.env', {
 
 * `type`: `"string"`, `"number"` or `"boolean"` (default: `"string"`)
 * `required`: `boolean` (default: `false`)
-* `default`: `any`
+* `default`: `any` or `function`

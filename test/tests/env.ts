@@ -109,4 +109,17 @@ describe('loadEnv()', () => {
 		});
 	});
 
+	it('should use default value from function', () => {
+		const schema: EnvSchema = {
+			UNKNOWN_VALUE: {
+				type: 'number',
+				default: () => 42,
+			},
+		};
+
+		expect(loadEnv(env, schema)).to.be.eql({
+			UNKNOWN_VALUE: 42,
+		});
+	});
+
 });
