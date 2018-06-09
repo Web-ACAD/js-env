@@ -55,7 +55,11 @@ export function loadEnv<T = any>(file: string, schema?: EnvSchema): T
 				}
 			}
 
-			const value = envParsed[key];
+			let value = envParsed[key];
+
+			if (typeof value !== 'string') {
+				value = value.toString();
+			}
 
 			if (conf.type === 'string') {
 				result[key] = value;

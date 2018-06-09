@@ -100,7 +100,7 @@ describe('loadEnv()', () => {
 		const schema: EnvSchema = {
 			UNKNOWN_VALUE: {
 				type: 'boolean',
-				default: '1',
+				default: 1,
 			},
 		};
 
