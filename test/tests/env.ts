@@ -14,7 +14,8 @@ describe('loadEnv()', () => {
 			NUMBER_VALUE: '42',
 			BOOLEAN_LOWERCASE_VALUE: 'false',
 			BOOLEAN_UPPERCASE_VALUE: 'TRUE',
-			BOOLEAN_NUMERIC_VALUE: '1',
+			BOOLEAN_NUMERIC_VALUE_TRUTHY: '1',
+			BOOLEAN_NUMERIC_VALUE_FALSY: '0',
 		});
 	});
 
@@ -57,7 +58,10 @@ describe('loadEnv()', () => {
 			BOOLEAN_UPPERCASE_VALUE: {
 				type: 'boolean',
 			},
-			BOOLEAN_NUMERIC_VALUE: {
+			BOOLEAN_NUMERIC_VALUE_TRUTHY: {
+				type: 'boolean',
+			},
+			BOOLEAN_NUMERIC_VALUE_FALSY: {
 				type: 'boolean',
 			},
 		};
@@ -67,7 +71,8 @@ describe('loadEnv()', () => {
 			NUMBER_VALUE: 42,
 			BOOLEAN_LOWERCASE_VALUE: false,
 			BOOLEAN_UPPERCASE_VALUE: true,
-			BOOLEAN_NUMERIC_VALUE: true,
+			BOOLEAN_NUMERIC_VALUE_TRUTHY: true,
+			BOOLEAN_NUMERIC_VALUE_FALSY: false,
 		});
 	});
 

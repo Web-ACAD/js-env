@@ -79,6 +79,10 @@ export function loadEnv<T = any>(file: string, schema?: EnvSchema): T
 					result[key] = true;
 
 				} else {
+					if (!isNaN(value)) {
+						value = +value;
+					}
+
 					result[key] = !!value;
 				}
 			}
